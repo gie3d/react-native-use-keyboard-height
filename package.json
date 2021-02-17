@@ -1,6 +1,6 @@
 {
   "name": "react-native-use-keyboard-height",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a simple hook to get keyboard height while it's shown",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",

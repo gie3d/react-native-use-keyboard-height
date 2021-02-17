@@ -4,7 +4,7 @@ import { Keyboard, Platform } from 'react-native';
 const useKeyboardHeight = (platforms: string[] = ['ios', 'android']) => {
 	const [keyboardHeight, setKeyboardHeight] = useState<number>(0);
 	useEffect(() => {
-		if (platforms?.map((p: string) => p.toLowerCase()).indexOf(Platform.OS) !== -1 || !platforms) {
+		if (isEventRequired(platforms)) {
 			Keyboard.addListener('keyboardDidShow', keyboardDidShow);
 			Keyboard.addListener('keyboardDidHide', keyboardDidHide);
 
@@ -14,9 +14,19 @@ const useKeyboardHeight = (platforms: string[] = ['ios', 'android']) => {
 				Keyboard.removeListener('keyboardDidHide', keyboardDidHide);
 			};
 		} else {
-      return () => {}
-    }
+			return () => {}
+		}
 	}, []);
+
+	const isEventRequired = (platforms: any) => {
+		try {
+			return platforms?.map((p: string) => p?.toLowerCase()).indexOf(Platform.OS) !== -1 || !platforms;
+		} catch (ex: any) {
+
+		}
+
+		return false;
+	}
 
 	const keyboardDidShow = (frames: any) => {
 		setKeyboardHeight(frames.endCoordinates.height);
