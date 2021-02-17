@@ -2,6 +2,8 @@
 
 a simple hook to get keyboard height while it's shown in react-native
 
+![Demo](./sample.gif)
+
 ## Installation
 
 ```sh
@@ -19,7 +21,7 @@ export default function App() {
   const keyboardHeight = useKeyboardHeight();
   return (
     <View style={styles.container}>
-      <Text>Result: {keyboardHeight}</Text>
+      <Text>Current Keyboard Height: {keyboardHeight}</Text>
       <TextInput style={styles.input}></TextInput>
     </View>
   );
@@ -36,6 +38,8 @@ const styles = StyleSheet.create({
     height: 50,
     borderWidth: 1,
     borderColor: 'grey',
+    textAlign: 'center',
+    marginTop: 10,
   },
 });
 ```

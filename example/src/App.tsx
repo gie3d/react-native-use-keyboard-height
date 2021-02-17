@@ -6,7 +6,7 @@ export default function App() {
   const keyboardHeight = useKeyboardHeight();
   return (
     <View style={styles.container}>
-      <Text>Result: {keyboardHeight}</Text>
+      <Text>Current Keyboard Height: {keyboardHeight}</Text>
       <TextInput style={styles.input}></TextInput>
     </View>
   );
@@ -22,6 +22,8 @@ const styles = StyleSheet.create({
     width: 300, 
     height: 50, 
     borderWidth: 1, 
-    borderColor: 'grey'
+    borderColor: 'grey',
+    textAlign: 'center',
+    marginTop: 10
   }
 });
