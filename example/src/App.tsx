@@ -1,19 +1,13 @@
-import * as React from 'react';
-
-import { StyleSheet, View, Text } from 'react-native';
-import UseKeyboardHeight from 'react-native-use-keyboard-height';
-
+import React from 'react';
+import { StyleSheet, View, Text, TextInput } from 'react-native';
+import useKeyboardHeight from 'react-native-use-keyboard-height';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    UseKeyboardHeight.multiply(3, 7).then(setResult);
-  }, []);
-
+  const keyboardHeight = useKeyboardHeight();
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Text>Result: {keyboardHeight}</Text>
+      <TextInput style={styles.input}></TextInput>
     </View>
   );
 }
@@ -24,9 +18,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
+  input: {
+    width: 300, 
+    height: 50, 
+    borderWidth: 1, 
+    borderColor: 'grey'
+  }
 });

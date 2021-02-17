@@ -1,6 +1,6 @@
 # react-native-use-keyboard-height
 
-a simple hook to get keyboard height while it's shown
+a simple hook to get keyboard height while it's shown in react-native
 
 ## Installation
 
@@ -11,11 +11,33 @@ npm install react-native-use-keyboard-height
 ## Usage
 
 ```js
-import UseKeyboardHeight from "react-native-use-keyboard-height";
+import React from 'react';
+import { StyleSheet, View, Text, TextInput } from 'react-native';
+import useKeyboardHeight from 'react-native-use-keyboard-height';
 
-// ...
+export default function App() {
+  const keyboardHeight = useKeyboardHeight();
+  return (
+    <View style={styles.container}>
+      <Text>Result: {keyboardHeight}</Text>
+      <TextInput style={styles.input}></TextInput>
+    </View>
+  );
+}
 
-const result = await UseKeyboardHeight.multiply(3, 7);
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  input: {
+    width: 300,
+    height: 50,
+    borderWidth: 1,
+    borderColor: 'grey',
+  },
+});
 ```
 
 ## Contributing
