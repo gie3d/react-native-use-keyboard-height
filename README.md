@@ -18,7 +18,7 @@ import { StyleSheet, View, Text, TextInput } from 'react-native';
 import useKeyboardHeight from 'react-native-use-keyboard-height';
 
 export default function App() {
-  const keyboardHeight = useKeyboardHeight(['ios', 'android']); // similar to const keyboardHeight = useKeyboardHeight(['ios', 'android']); 
+  const keyboardHeight = useKeyboardHeight(['ios', 'android']); // similar to const keyboardHeight = useKeyboardHeight(); 
   return (
     <View style={styles.container}>
       <Text>Current Keyboard Height: {keyboardHeight}</Text>
