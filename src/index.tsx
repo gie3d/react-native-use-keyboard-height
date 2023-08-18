@@ -5,13 +5,13 @@ const useKeyboardHeight = (platforms: string[] = ['ios', 'android']) => {
 	const [keyboardHeight, setKeyboardHeight] = useState<number>(0);
 	useEffect(() => {
 		if (isEventRequired(platforms)) {
-			Keyboard.addListener('keyboardDidShow', keyboardDidShow);
-			Keyboard.addListener('keyboardDidHide', keyboardDidHide);
+			const showSub = Keyboard.addListener('keyboardDidShow', keyboardDidShow);
+			const hideSub = Keyboard.addListener('keyboardDidHide', keyboardDidHide);
 
 			// cleanup function
 			return () => {
-				Keyboard.removeListener('keyboardDidShow', keyboardDidShow);
-				Keyboard.removeListener('keyboardDidHide', keyboardDidHide);
+				showSub.remove();
+				hideSub.remove();
 			};
 		} else {
 			return () => {}
